@@ -1,0 +1,25 @@
+###################kafka日志格式以及含义###################
+#各个字段含义
+ProductType URID UDID  							Ver		Action	DirectObject	IndirectObject	Source	Result	Message	CTID	IPAddress	ConnectNet	Datetime Remarks
+#原始日志 
+0	1	297c8935f5317354b738d6d4028b07998685ed8b	8.0.0	start	wcc 	911142289716353040	iphone	2		64	61.130.140.92	3	iphone.wochacha.com/ggstudy/api?app=wochacha4&dist=Apple&dos=iPhone%20OS&dosv=7.1.2&advon=1&model=iPhone&brand=Apple&buserid=911142289716353040&tokenid=&utype=iPhone5,2&hres=640&vres=1136&mac=595F9488-4BB2-47C6-9B79-9876097A739E&city_id=64&udid=297c8935f5317354b738d6d4028b07998685ed8b&openid=297c8935f5317354b738d6d4028b07998685ed8b&v=8.0.0&devicetoken=299dfdb8c584707bd2a36e1127fe9867&token=5O_TLpWjmxra1PHdzkhpm7FhjE1L97LckfhD82X-xXgfRjZWAi2P01KeLev03OhfwCmG6kt2E35QJ2EDf5JAsQ&source=iphone&connectnet=wifi&os=iphone	2015-02-04 13:00:311423026031	
+0	207567866	864601020268611	8.0.1	banner	positon	1	android	2		598	115.25.91.30	2	android.wochacha.com/NewBanner?city_id=598&os=Android&v=8.0.1&urid=207567866&connectnet=mobile&newudid=36e5899e03a0e941e08c0a02ef193bf2&mac=e0%3A19%3A1d%3Ab1%3A34%3A30&udid=864601020268611&devicetoken=46f762c93c6a238c921694105c551d4d&dist=s_huawei_2012	2015-02-04 13:00:31	1423026031	,
+0	211653149	864566025518239	8.0.1	evaluate	barcode	3	android		37978845	362	182.142.115.104	3	android.wochacha.com/ggstudy/vote?city_id=362&os=Android&v=8.0.1&urid=211653149&token=ZgNtJ2VbDLaqtQS_PhPpb0mTNJ0Qe335fEjd-TrELDc&connectnet=wifi&newudid=63cb0b9b9730cef30332053bc124a54b&pkid=11013887986&mac=ac%3A38%3A70%3Aad%3A21%3Af2&udid=864566025518239&votetype=3	2015-02-04 13:00:31	1423026031	
+
+
+###################Extract提取过后###################
+#各个字段含义
+Access 时间 设备ID 渠道 创建时间 机型 平台或操作系统 软件版本 联网方式 城市ID 新设备标志 日期时间 分辨率 省份 城市 运营商 用户行为 DirectObject IndirectObject 结果集 消息 标志 产品类型 用户ID 操作系统版本号 IP地址
+访问标志 Date UDID  dist createdTime	model	Source Ver	ConnectNet	CTID_ip	newDevFlag	Datetime province city operator Action DirectObject IndirectObject Result Message Remarks ProductType URID dosV IPAddress
+
+#原始日志 
+Access	2015-02-04	00fac1808833db45366b29960262462d3016242c	apple	2013-05-19 12:32:38	iPhone 4	iphone	8.0	3	54	false	2015-02-04 13:00:33	640x960	河北省	邢台市	电信	Show.Nearby	Barcode	1024685	null	null	184127845	0	unknown	6.1.3	111.226.151.101
+Access	2015-02-04	028f914b439fc4e9410005bcabf8060df16e96b1	unknown	unknown	unknown	iphone	8.0	0	2	false	2015-02-04 21:17:41	unknown	北京市	北京市	unknown	banner	positon	1	2	unknown	0.00000,0.00000	0	unknown	unknown	1.45.93.238
+Access	2015-02-04	030ff554a6cdd7f2370c0e15f944cb52659498c9	apple	2013-11-24 23:28:51	IPOD TOUCH	iphone	8.0	3	34	false	2015-02-04 21:17:41	640x960	江苏省	南京市	联通	access	scan	/newscan	2	unknown	null	0	unknown	7.1	58.240.255.44
+#输入的key和value为
+（文本偏移量，单行文本内容）
+#输出的key和value为
+输出的key和value为（Access Datetime，UDID dist createdTime model Source Ver ConnectNet CTID_ip newDevFlag Datetime Datetime province city operator Action DirectObject IndirectObject Result Message
+Remarks ProductType URID dosV IPAddress）
+输出的key和value为（Access log处理的日期时间，设备ID 渠道 创建时间 机型 平台或操作系统 软件版本 联网方式 城市ID 新设备标志 日期时间 分辨率 省份 城市 运营商 用户行为 DirectObject IndirectObject 结果集 消息
+标志 产品类型 用户ID 操作系统版本号 IP地址）
